@@ -1,0 +1,35 @@
+name: Main
+
+on:
+  # weekly
+  schedule:
+    - cron: 0 0 * * 0
+  # on-demand
+  repository_dispatch:
+
+jobs:
+  build-branch-master:
+    name: Build for branch `master`
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run index.js
+      run: node index.js
+  build-branch-a:
+    name: Build for branch `a`
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: a
+    - name: Run index.js
+      run: node index.js
+  build-branch-b:
+    name: Build for branch `b`
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: b
+    - name: Run index.js
+      run: node index.js
