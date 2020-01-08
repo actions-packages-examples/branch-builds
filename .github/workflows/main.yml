@@ -7,16 +7,15 @@ on:
   # on-demand
   repository_dispatch:
 
-env:
-  branch-to-build: ${{ github.event.client_payload.branch || 'master' }}
-
 jobs:
   build:
-    name: Build for the ${{ env.branch-to-build }} branch
+    env:
+      branch-to-build: ${{ github.event.client_payload.branch || 'master' }}
+    name: Build for the ${{ job.build.branch-to-build }} branch
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ env.branch-to-build }}
+        ref: ${{ job.build.branch-to-build }}
     - name: Run index.js
       run: node index.js
