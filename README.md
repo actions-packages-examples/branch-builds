@@ -22,5 +22,5 @@ The value of `event_type` can be any non-empty string and does not affect the bu
 
 ## Resources
 
-* [GitHub Developer | create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
-* [GitHub Help | Events that trigger workflows / External Events: `repository_dispatch`](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#external-events-repository_dispatch)
+* [GitHub Developer: create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
+* [GitHub Help: Events that trigger workflows / External Events: `repository_dispatch`](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#external-events-repository_dispatch)
