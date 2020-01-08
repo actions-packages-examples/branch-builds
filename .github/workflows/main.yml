@@ -8,15 +8,15 @@ on:
   repository_dispatch:
 
 env:
-  branch-to-build: ${{ github.event.client_payload.branch || 'master' }}
+  target: ${{ github.event.client_payload.branch || 'master' }}
       
 jobs:
   build:
-    name: Build for the ${{ workflow.env.branch-to-build }} branch
+    name: Build for the ${{ target }} branch
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ workflow.env.branch-to-build }}
+        ref: ${{ target }}
     - name: Run index.js
       run: node index.js
