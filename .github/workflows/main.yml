@@ -8,28 +8,12 @@ on:
   repository_dispatch:
 
 jobs:
-  build-branch-master:
-    name: Build for branch `master`
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run index.js
-      run: node index.js
-  build-branch-a:
-    name: Build for branch `a`
+  build:
+    name: Build for the ${{ github.event.client_payload.branch }} branch
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: a
-    - name: Run index.js
-      run: node index.js
-  build-branch-b:
-    name: Build for branch `b`
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: b
+        ref: ${{ github.event.client_payload.branch || 'master' }}
     - name: Run index.js
       run: node index.js
