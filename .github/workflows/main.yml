@@ -12,11 +12,11 @@ env:
       
 jobs:
   build:
-    name: Build for the ${{ env.branch-to-build }} branch
+    name: Build for the ${{ workflow.env.branch-to-build }} branch
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ env.branch-to-build }}
+        ref: ${{ workflow.env.branch-to-build }}
     - name: Run index.js
       run: node index.js
