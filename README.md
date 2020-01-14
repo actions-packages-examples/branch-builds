@@ -13,12 +13,11 @@ curl -v \
   -H "Accept: application/vnd.github.everest-preview+json" \
   -H "Authorization: token $TOKEN" \
   https://api.github.com/repos/$OWNER/$REPO/dispatches \
-  -X POST -d '{"event_type":"trigger"}'
+  -X POST -d '{"event_type":"trigger", "client_payload": {"branch":"a"}}'
 ```
 
-
-
-The value of `event_type` can be any non-empty string and does not affect the build output in any way.
+* The value of `event_type` can be any non-empty string and does not affect the build output in any way.
+* The `client_payload` field expects a JSON object with zero or more key-value pairs. The workflow file that triggers for the `repository_dispatch` event looks for a `branch` to build, so this example request sends a repository dispatch event that "builds" branch `a`.
 
 ## Resources
 
