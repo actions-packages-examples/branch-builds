@@ -6,6 +6,9 @@ on:
     - cron: 0 0 * * 0
   # on-demand
   repository_dispatch:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -16,3 +19,5 @@ jobs:
         ref: ${{ github.event.client_payload.branch || 'master' }}
     - name: Run index.js
       run: node index.js
+    - name: Output the GITHUB_REF this workflow is running in
+      run: echo $GITHUB_REF
